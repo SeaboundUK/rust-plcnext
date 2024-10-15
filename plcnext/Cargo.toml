@@ -60,5 +60,5 @@ exclude = [
 maintenance = { status = "experimental" }
 
 [dependencies]
-plcnext-sys = "0.2.0"
+plcnext-sys = { path = "../plcnext-sys" }
 lazy_static = "1.3.0"
