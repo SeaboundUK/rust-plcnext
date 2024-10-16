@@ -11,6 +11,7 @@ fn main() {
     println!("cargo:rustc-link-lib=Arp.System.Rsc");
     println!("cargo:rustc-link-lib=Arp.System.Commons");
     println!("cargo:rustc-link-lib=Arp.System.Core");
+    //println!("cargo:rustc-link-lib=Arp.Device.Interface"); This might be necessary? not sure
     println!("cargo:rustc-link-lib=cppformat");
     println!("cargo:rustc-link-lib=stdc++");
     //println!("cargo:rustc-link-lib=Arp.System.Nm");

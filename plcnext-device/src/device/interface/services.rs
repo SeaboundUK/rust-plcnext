@@ -1,4 +1,4 @@
-cpp!{{
+cpp! {{
     #include "Arp/Device/Interface/Services/IDeviceStatusService.hpp"
     #include "Arp/Device/Interface/Services/IDeviceInfoService.hpp"
     #include "Arp/System/Rsc/ServiceManager.hpp"
@@ -30,6 +30,19 @@ impl DeviceStatusService {
             }
 
             return m_byCpuLoad;
+        })
+    }
+
+    pub fn board_temperature(&self) -> i8 {
+        cpp!(unsafe [self as "const IDeviceStatusService::Ptr*"] -> i8 as "char" {
+            RscVariant<512> m_rscBoardTemp;
+            int8 m_byBoardTemp;
+            if (self != NULL)
+            {
+                m_rscBoardTemp = self->get()->GetItem("Status.Board.Temperature.Centigrade") ;
+                m_rscBoardTemp.CopyTo(m_byBoardTemp);
+            }
+            return m_byBoardTemp;
         })
     }
 }
